@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Productivity<br>Dashboard</h1>
+            <p class="subtitle">Elegantly organized · Beautifully simple</p>
+        </header>
+
+        <!-- Main Task Card -->
+        <div class="card task-card">
+            <div class="card-number">01</div>
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">Task Manager</h2>
+                    <div class="filter-indicator" id="filterIndicator">Showing: All Tasks</div>
+                </div>
+                <button class="btn" id="openModalBtn"><span>New Task</span></button>
+            </div>
+
+            <div class="input-wrapper">
+                <input type="text" class="floating-input" id="quickInput" placeholder=" ">
+                <label class="floating-label">Quick add a task...</label>
+            </div>
+
+            <ul class="task-list" id="taskList">
+                <div class="empty-state">
+                    <div class="empty-state-icon">✦</div>
+                    <p>Your canvas awaits.<br>Begin with your first task.</p>
+                </div>
+            </ul>
+        </div>
+
+        <!-- Stats Card -->
+        <div class="card stats-card">
+            <div class="card-number">02</div>
+            <div class="card-header">
+                <h2 class="card-title">Overview</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item clickable" data-filter="all" style="--stat-color: var(--accent-dark)">
+                    <div class="stat-value" id="totalTasks">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+                <div class="stat-item clickable" data-filter="completed" style="--stat-color: var(--success)">
+                    <div class="stat-value" id="completedTasks">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-item clickable" data-filter="pending" style="--stat-color: var(--accent)">
+                    <div class="stat-value" id="pendingTasks">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Card -->
+        <div class="card faq-card">
+            <div class="card-number">03</div>
+            <div class="card-header">
+                <h2 class="card-title">Guide</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-question">How do I add tasks?</div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-answer">Type directly in the quick-add field, or click "New Task" for the modal experience. Press Enter to submit instantly.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-question">Are tasks saved automatically?</div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-answer">Yes. Every action is instantly saved to your browser's localStorage, persisting across sessions.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-question">What are the keyboard shortcuts?</div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-answer">Press Ctrl+K (Cmd+K on Mac) to open the task modal. Press Escape to close it. Enter submits forms.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-question">How do I complete tasks?</div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-answer">Click the checkbox beside any task. The statistics update in real-time to reflect your progress.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Create Task</h3>
+                <p class="modal-subtitle">What needs to be accomplished?</p>
+                <button class="close-modal" id="closeModalBtn">×</button>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" class="floating-input" id="modalInput" placeholder=" ">
+                <label class="floating-label">Describe your task...</label>
+            </div>
+            <button class="btn" id="addTaskBtn" style="width: 100%; margin-top: 1rem;"><span>Add Task</span></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
